@@ -160,6 +160,24 @@ nav a:active {
     color: #7300b5;
 }
 
+nav a.active {
+    color: #d4d4d4;
+    position: relative;
+    display: inline-block;
+}
+
+nav a.active::after {
+    content: "";
+    display: block;
+    background-color: #1d00ff;
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    top: 2%;
+    left: -5%;
+    z-index: -1;
+}
+
 section a:hover {
     text-decoration: underline;
 }
@@ -196,16 +214,39 @@ section a:hover {
 
 #estudios {
     background-color: #1d00ff;
+    // background-image: linear-gradient(to bottom, #3320db 86%,#d4d4d4 98%);
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    background-position: center bottom;
     color: #d4d4d4;
-    text-align: center;
     display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 80px 40px;
     min-height: 100%;
     height: auto;
 }
 
+#estudios header {
+    flex: 2;
+}
+
+#estudios div {
+    flex: 1;
+}
+
+#estudios li {
+    margin-bottom: 30px;
+}
+
+#estudios li p:first-child {
+    font-weight: 100;
+    margin-bottom: -10px;
+}
+
+#estudios p small {
+    font-weight: 500;
+    color: #939393;
+    text-transform: uppercase;
+}
 
 /* helpers */
 
