@@ -7,39 +7,64 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav>
-        <a class="--text-blue" href="#">Portada</a>
+
+    <nav class="site-nav">
+        <a class="link site-nav__link-home" href="#">Portada</a>
         <ul>
-            <li><a class="active" href="#">Quien Soy</a></li>
-            <li><a href="#">Estudios</a></li>
-            <li><a href="#">Experiencia</a></li>
-            <li><a href="#">Sobre mi</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li class="item-list-inline">
+                <a class="link site-nav__link--active" href="#">Quien Soy</a>
+            </li>
+            <li class="item-list-inline">
+                <a class="link" href="#">Estudios</a>
+            </li>
+            <li class="item-list-inline">
+                <a class="link" href="#">Experiencia</a>
+            </li>
+            <li class="item-list-inline">
+                <a class="link" href="#">Sobre mi</a>
+            </li>
+            <li class="item-list-inline">
+                <a class="link" href="#">Contacto</a>
+            </li>
         </ul>
     </nav>
-    <header>
+
+    <header class="site-header">
         <div>
-            <h1><span class="--regular">Mucho gusto!</span> Soy Adriel</h1>
-            <ul>
-                <li><span class="--text-bg --text-bg-orange">Frontend Developer /</span></li>
-                <li><span class="--text-bg --text-bg-orange">UI Designer &</span></li>
-                <li><span class="--text-bg --text-bg-orange">Illustrator</span> </li>
+            <h1 class="site-header__title"><span class="--regular">Mucho gusto!</span> Soy Adriel</h1>
+            <ul class="site-header__skills">
+                <li>
+                    <span class="text-bg text-bg--orange">Frontend Developer /</span>
+                </li>
+                <li>
+                    <span class="text-bg text-bg--orange">UI Designer &</span>
+                </li>
+                <li>
+                    <span class="text-bg text-bg--orange">Illustrator</span>
+                </li>
             </ul>
         </div>
     </header>
+
     <section id="quien-soy">
         <header></header>
         <div>
-            <!-- <h2>Quien Soy</h2> -->
-            <p>Mi nombre es Adriel Zarate y actualmente trabajo como Frontend Developer / UI Designer en <a href="https://centricdigital.com/">Centric Digital</a> y como profesor de Informatica en <a href="http://www.uda.edu.ar/">Universidad del Aconcagua</a>.</p>
+            <!--
+            <header>
+                <h2>Quien Soy</h2>
+            </header>
+            -->
+            <p>Mi nombre es Adriel Zarate y actualmente trabajo como Frontend Developer / UI Designer en <a class="link" href="https://centricdigital.com/">Centric Digital</a> y como profesor de Informatica en <a class="link" href="http://www.uda.edu.ar/">Universidad del Aconcagua</a>.</p>
             <p>Siempre interesado en aprender y mejorar habilidades, he trabajado en una amplia variedad de proyectos, tanto en equipo como lead designer y en solitario como freelance. Como proyectos personales planeo publicar mi propio comic y un ROM para NES.</p>
         </div>
     </section>
-    <section id="estudios">
 
-<!--         <header>
+    <section id="estudios">
+        <!--
+        <header>
             <h2>Estudios</h2>
-        </header> -->
+        </header>
+        -->
         <div>
             <ul>
                 <li>
