@@ -53,7 +53,6 @@ body>section {
     height: 100%;
 }
 
-/*body>header {*/
 .site-header {
     position: relative;
     display: flex;
@@ -65,8 +64,16 @@ body>section {
         url(../img/yo-t-bn.png),
         url(../img/yo-t-c.png),
         url(../img/yo-b.png),
-        linear-gradient(-45deg, #321fdb 22%, #321fdb 22%, #f3422b 63%, #f3422b 63%, #f3422b 100%);
+        /*linear-gradient(-45deg, #321fdb 22%, #321fdb 22%, #f3422b 63%, #f3422b 63%, #f3422b 100%),*/
+        linear-gradient(-45deg,
+            rgba(50, 31, 219, .9) 22%,
+            rgba(50, 31, 219, .9) 22%,
+            rgba(243, 66, 43, .9) 63%,
+            rgba(243, 66, 43, .9) 63%,
+            rgba(243, 66, 43, .9) 100%),
+        url(../img/home-bg.png);
     background-repeat:
+        no-repeat,
         no-repeat,
         no-repeat,
         no-repeat,
@@ -75,12 +82,14 @@ body>section {
         auto 85%,
         auto 85%,
         auto 85%,
-        400% 400%;
+        400% 400%,
+        100% 100%;
     background-position:
         85% bottom,
         85% bottom,
         80% 115%,
-        0% 50%;
+        0% 50%,
+        0 0;
     animation: bg-transition 15s ease infinite;
     animation-delay: 2s;
 }
@@ -91,32 +100,33 @@ body>section {
             85% bottom,
             85% bottom,
             80% 115%,
-            0% 50%;
+            0% 50%,
+            0 0;
     }
     50% {
         background-position:
             85% bottom,
             85% bottom,
             80% 115%,
-            100% 50%;
+            100% 50%,
+            0 0;
     }
     100% {
         background-position:
             85% bottom,
             85% bottom,
             80% 115%,
-            0% 50%;
+            0% 50%,
+            0 0;
     }
 }
 
-/*body>header h1 {*/
 .site-header__title {
     font-size: 3.5rem;
     line-height: 5rem;
     margin: 0;
 }
 
-/*body>header ul {*/
 .site-header__skills {
     font-size: 2.5rem;
     line-height: 2.5rem;
@@ -127,13 +137,11 @@ body>section {
     box-shadow: -3px 5px 0px -3px #f3412a;
 }
 
-/*a {*/
 .link {
     text-decoration: none;
     color: #f3412b;
 }
 
-/*section a:hover {*/
 .link:hover {
     color: #1d00ff;
     text-decoration: underline;
@@ -165,12 +173,6 @@ body>section {
     margin-left: 10px;
 }
 
-/*nav a:hover,
-nav a:focus,
-nav a:active {
-    color: #7300b5;
-}*/
-
 .site-nav__link--active {
     color: #d4d4d4;
     position: relative;
@@ -200,14 +202,27 @@ nav a:active {
     color: #7300b5;
     display: flex;
     align-items: center;
-    background-image: url(../img/quien-soy.jpg);
-    background-size: auto 100%;
-    background-repeat: no-repeat;
-    background-position: 0;
 }
 
-#quien-soy header {
+.img-container {
+
+}
+
+#quien-soy .img-container img {
+    min-height: 100%;
+    min-width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#quien-soy header,
+#quien-soy .img-container {
     flex: 1.2;
+    overflow: hidden;
+    height: 100%;
+    padding: 0;
+    position: relative;
 }
 
 #quien-soy div {
@@ -226,10 +241,9 @@ nav a:active {
 
 #estudios {
     background-color: #1d00ff;
-    // background-image: linear-gradient(to bottom, #3320db 86%,#d4d4d4 98%);
-    background-attachment: fixed;
-    background-size: 100% 100%;
-    background-position: center bottom;
+    /*background-attachment: fixed;*/
+    /*background-size: 100% 100%;*/
+    /*background-position: center bottom;*/
     color: #d4d4d4;
     display: flex;
     padding: 80px 40px;
