@@ -1,6 +1,5 @@
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
+*:focus { outline: 0; }
 
 html,
 body {
@@ -48,9 +47,8 @@ ul {
     padding: 0;
 }
 
-body>header,
-body>section {
-    height: 100%;
+.h-100 {
+    min-height: 100%;
 }
 
 .site-header {
@@ -196,7 +194,9 @@ body>section {
     z-index: -1;
 }
 
-#quien-soy {
+/**/
+
+.quien-soy {
     background-color: #d4d4d4;
     height: 100%;
     color: #7300b5;
@@ -204,11 +204,13 @@ body>section {
     align-items: center;
 }
 
-.img-container {
-
+.quien-soy__img-container {
+    overflow: hidden;
+    height: 100%;
+    position: relative;
 }
 
-#quien-soy .img-container img {
+.quien-soy__img {
     min-height: 100%;
     min-width: 100%;
     position: absolute;
@@ -216,34 +218,23 @@ body>section {
     top: 0;
 }
 
-#quien-soy header,
-#quien-soy .img-container {
-    flex: 1.2;
-    overflow: hidden;
-    height: 100%;
-    padding: 0;
-    position: relative;
+.quien-soy__profile-container {
+    padding-left: 40px;
 }
 
-#quien-soy div {
-    padding: 40px;
-    flex: 1;
-}
-
-#quien-soy div p {
+.quien-soy__profile-container p {
     width: 405px;
     color: #7300b4;
 }
 
-#quien-soy div p+p {
+.quien-soy__profile-container p + p {
     font-size: .9rem;
 }
 
-#estudios {
+/**/
+
+.estudios {
     background-color: #1d00ff;
-    /*background-attachment: fixed;*/
-    /*background-size: 100% 100%;*/
-    /*background-position: center bottom;*/
     color: #d4d4d4;
     display: flex;
     padding: 80px 40px;
@@ -251,38 +242,96 @@ body>section {
     height: auto;
 }
 
-#estudios header {
-    flex: 2;
-}
-
-#estudios div {
+.col-50 {
     flex: 1;
 }
 
-#estudios li {
+.estudios__item {
     margin-bottom: 30px;
 }
 
-#estudios li p:first-child {
+.estudios__item-title {
     font-weight: 100;
     margin-bottom: -10px;
 }
 
-#estudios p small {
+.estudios__item-place {
     font-weight: 500;
     color: #939393;
     text-transform: uppercase;
 }
 
+/**/
+
+.experiencia {
+    display: flex;
+    padding: 80px 40px;
+    min-height: 100%;
+}
+
+/**/
+
+.contacto {
+    display: flex;
+    min-height: 100%;
+}
+
+.contacto__form {
+    width: 40%;
+    height: 100%;
+    padding: 80px 40px;
+    background-color: #000;
+    color: #fff;
+}
+
+.label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.fieldset {
+    border: none;
+    padding: 0;
+}
+
+.contact-item {
+    margin-bottom: 20px;
+}
+
+.input-field {
+    padding: 10px;
+    width: 100%;
+    background-color: #000;
+    color: #d4d4d4;
+    border: #fff solid thin;
+    margin-top: 5px;
+}
+
+.input-field--disabled {
+    border-color: #333;
+}
+
+.btn {
+    background-color: #f3412b;
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    font-size: .9rem;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active {
+    background-color: #1d00ff;
+}
+
+.btn-submit {
+
+}
+
 /* helpers */
-
-.--text-blue {
-    color: #1d00ff;
-}
-
-.--text-gray {
-    color: #939393;
-}
 
 .--regular {
     font-weight: 400;
@@ -290,14 +339,6 @@ body>section {
 
 .--medium {
     font-weight: 500;
-}
-
-.work-sans {
-    font-family: 'Work Sans', sans-serif;
-}
-
-.eczar {
-    font-family: 'Eczar', serif;
 }
 
 .text-bg {

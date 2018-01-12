@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css?family=Eczar:400,500,700|Work+Sans:300, 500,800" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
 
+<body>
     <nav class="site-nav">
-        <a class="link site-nav__link-home" href="#">Portada</a>
+        <a class="link site-nav__link-home site-nav__link--active" href="#">Portada</a>
         <ul>
             <li class="item-list-inline">
-                <a class="link site-nav__link--active" href="#">Quien Soy</a>
+                <a class="link" href="#">Quien Soy</a>
             </li>
             <li class="item-list-inline">
                 <a class="link" href="#">Estudios</a>
@@ -28,8 +29,7 @@
             </li>
         </ul>
     </nav>
-
-    <header class="site-header">
+    <header class="site-header h-100">
         <div>
             <h1 class="site-header__title"><span class="--regular">Mucho gusto!</span> Soy Adriel</h1>
             <ul class="site-header__skills">
@@ -45,119 +45,123 @@
             </ul>
         </div>
     </header>
-
-    <section id="quien-soy">
-        <div class="img-container">
-            <img src="img/quien-soy.jpg" alt="">
+    <section class="quien-soy h-100">
+        <div class="col-50 quien-soy__img-container">
+            <img class="quien-soy__img" src="img/quien-soy.jpg" alt="">
         </div>
-        <div>
-            <!--
-            <header>
-                <h2>Quien Soy</h2>
-            </header>
-            -->
+        <div class="col-50 quien-soy__profile-container">
             <p>Mi nombre es Adriel Zarate y actualmente trabajo como Frontend Developer / UI Designer en <a class="link" href="https://centricdigital.com/">Centric Digital</a> y como profesor de Informatica en <a class="link" href="http://www.uda.edu.ar/">Universidad del Aconcagua</a>.</p>
             <p>Siempre interesado en aprender y mejorar habilidades, he trabajado en una amplia variedad de proyectos, tanto en equipo como lead designer y en solitario como freelance. Como proyectos personales planeo publicar mi propio comic y un ROM para NES.</p>
         </div>
     </section>
+    <section class="estudios h-100">
+        <div class="col-50">
+            <ul>
+                <li class="estudios__item">
+                    <p class="estudios__item-title">Tecnico Electrico</p>
+                    <p><small class="estudios__item-place">Escuela Tecnica Industrial Emilio Civit - 2005</small></p>
+                </li>
+                <li class="estudios__item">
+                    <p class="estudios__item-title">Licenciado en Diseño Multimedial</p>
+                    <p><small class="estudios__item-place">Universidad Champagnat - 2009</small></p>
+                </li>
+                <li class="estudios__item">
+                    <p class="estudios__item-title">Profesorado Superior</p>
+                    <p><small class="estudios__item-place">Universidad Juan Agustin Maza - 2017</small></p>
+                </li>
+            </ul>
+        </div>
+        <div class="col-50">
+            <ul>
+                <li class="estudios__item">
+                    <p class="estudios__item-title">Programacion en Java</p>
+                    <p><small class="estudios__item-place">Escuela de Programacion Mendoza - 2010</small></p>
+                </li>
+                <li class="estudios__item">
+                    <p class="estudios__item-title">Taller Desarrollo de Aplicaciones Web de Google</p>
+                    <p><small class="estudios__item-place">Universidad Tecnologica Nacional - 2012</small></p>
+                </li>
+                <li class="estudios__item">
+                    <p class="estudios__item-title">Curso Intensivo de Electronica y programacion de microcontroladores</p>
+                    <p><small class="estudios__item-place">Instituto de Electronica Moderna - 2013</small></p>
+                </li>
+                <li class="estudios__item">
+                    <p class="estudios__item-title">Taller Diseño Aplicaciones Moviles</p>
+                    <p><small class="estudios__item-place">Universidad Champagnat - 2014</small></p>
+                </li>
+                <li class="estudios__item">
+                    <p class="estudios__item-title">HTML5 con JavaScript y CSS3</p>
+                    <p><small class="estudios__item-place">Microsoft Virtual Academy - 2015</small></p>
+                </li>
+                <li class="estudios__item">
+                    <p class="estudios__item-title">Modern Web Platform Jump Start</p>
+                    <p><small class="estudios__item-place">Microsoft Virtual Academy - 2015</small></p>
+                </li>
+                <li class="estudios__item">
+                    <p class="estudios__item-title">Videojuegos 2D con Unity</p>
+                    <p><small class="estudios__item-place">Microsoft Virtual Academy - 2016</small></p>
+                </li>
+                <li class="estudios__item">
+                    <p class="estudios__item-title">Desarrollador Frontend</p>
+                    <p><small class="estudios__item-place">FreeCodeCamp.com - 2016</small></p>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="experiencia h-100">
+        <div class="col-50">
+            <p>Empece a trabajar en la web en el año 2007 con Flash y HTML. Entre Actionscript y HTML/CSS creaba banners y landing pages.</p>
+            <p>Un año despues empece a trabajar en un diario digital, mayormente enfocado en el area de diseño</p>
+            <p>Al año siguiente consegui trabajo en una empresa desarrolladora de contenido elearning, como diseñador y desarrollador con Actionscript, XML y HTML/CSS/JS, trabajando en plataformas como Moodle y SCORM</p>
+            <p>En el año 2013 me lance como diseñador y maquetador web freelance, y trabaje mayormente haciendo sitios del gobierno. Alli, junto a un desarrollador backend, conoci un poco de Python ya que trabajabamos con Django y Flask</p>
+            <p>Desde mediados del 2014 trabajo como desarrollador frontend y diseñador web subcontratado para una empresa de New York con Wordpress.</p>
+        </div>
+        <div class="col-50"></div>
+    </section>
+    <section class="contacto h-100">
+        <form class="contacto__form" action="">
 
-    <section id="estudios">
-        <!--
-        <header>
-            <h2>Estudios</h2>
-        </header>
-        -->
-        <div>
-            <ul>
-                <li>
-                    <p>Tecnico Electrico</p>
-                    <p><small>Escuela Tecnica Industrial Emilio Civit - 2005</small></p>
-                </li>
-                <li>
-                    <p>Licenciado en Diseño Multimedial</p>
-                    <p><small>Universidad Champagnat - 2009</small></p>
-                </li>
-                <li>
-                    <p>Profesorado Superior</p>
-                    <p><small>Universidad Juan Agustin Maza - 2017</small></p>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <!-- <h3>Cursos</h3> -->
-            <ul>
-                <li>
-                    <p>Programacion en Java</p>
-                    <p><small>Escuela de Programacion Mendoza - 2010</small></p>
-                </li>
-                <li>
-                    <p>Taller Desarrollo de Aplicaciones Web de Google</p>
-                    <p><small>Universidad Tecnologica Nacional - 2012</small></p>
-                </li>
-                <li>
-                    <p>Curso Intensivo de Electronica y programacion de microcontroladores</p>
-                    <p><small>Instituto de Electronica Moderna - 2013</small></p>
-                </li>
-                <li>
-                    <p>Taller Diseño Aplicaciones Moviles</p>
-                    <p><small>Universidad Champagnat - 2014</small></p>
-                </li>
-                <li>
-                    <p>HTML5 con JavaScript y CSS3</p>
-                    <p><small>Microsoft Virtual Academy - 2015</small></p>
-                </li>
-                <li>
-                    <p>Modern Web Platform Jump Start</p>
-                    <p><small>Microsoft Virtual Academy - 2015</small></p>
-                </li>
-                <li>
-                    <p>Videojuegos 2D con Unity</p>
-                    <p><small>Microsoft Virtual Academy - 2016</small></p>
-                </li>
-                <li>
-                    <p>Desarrollador Frontend</p>
-                    <p><small>FreeCodeCamp.com - 2016</small></p>
-                </li>
-            </ul>
-        </div>
+            <div class="contact-item">
+                <label class="label" for="name">Nombre</label>
+                <input class="input-field" id="name" type="text" required>
+            </div>
+
+            <div class="contact-item">
+                <label class="label" for="email">Email</label>
+                <input class="input-field" id="email" type="email" required>
+            </div>
+
+            <fieldset class="fieldset contact-item">
+                <legend class="label">Como me has conocido</legend>
+                <label class="label"><input type="radio" name="networking" value="fb"> Facebook</label>
+                <label class="label"><input type="radio" name="networking" value="tw"> Twitter</label>
+                <label class="label"><input type="radio" name="networking" value="gt"> Github</label>
+                <label class="label"><input type="radio" name="networking" value="ev"> Evento</label>
+                <label class="label"><input type="radio" name="networking" value="ot"> Otro</label>
+                <input class="input-field input-field--disabled" type="text" name="networking">
+            </fieldset>
+
+            <div class="contact-item">
+                <label class="label" for="phone">Numero de contacto</label>
+                <input class="input-field" id="phone" type="telephone" pattern="/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/">
+            </div>
+
+            <div class="contact-item">
+                <label class="label" for="message">Mensaje</label>
+                <textarea class="input-field" id="message" name="message"></textarea>
+            </div>
+
+            <button class="btn btn-submit" type="submit">Enviar</button>
+        </form>
     </section>
-<!--
-    <section>
-        <h2>Experiencia</h2>
-        <p></p>
-    </section>
+    <!--
     <section>
         <h2>Sobre mi</h2>
         <p></p>
         <video src=""></video>
     </section>
-    <section>
-        <h2>Contacto</h2>
-        <p></p>
-        <form action="">
-            <label for="name" required>Nombre</label>
-            <input id="name" type="text">
-
-            <label for="email" required>Email</label>
-            <input id="email" type="email">
-
-            <label for="">Como me has conocido</label>
-            <input type="radio" name="networking" value="fb"> Facebook
-            <input type="radio" name="networking" value="tw"> Twitter
-            <input type="radio" name="networking" value="gt"> Github
-            <input type="radio" name="networking" value="ev"> Evento
-            <input type="radio" name="networking" value="ot"> Otro
-            <input type="text">
-
-            <label for="phone">Numero de contacto</label>
-            <input id="phone" type="telephone">
-
-            <textarea id="msj" name="msj"></textarea>
-
-            <button type="submit">Enviar</button>
-        </form>
-    </section>
 -->
     <script></script>
 </body>
+
 </html>
