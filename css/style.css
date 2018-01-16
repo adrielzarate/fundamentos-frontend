@@ -64,11 +64,11 @@ ul {
         url(../img/yo-b.png),
         /*linear-gradient(-45deg, #321fdb 22%, #321fdb 22%, #f3422b 63%, #f3422b 63%, #f3422b 100%),*/
         linear-gradient(-45deg,
-            rgba(50, 31, 219, .9) 22%,
+            rgba(50, 31, 219, 1) 12%,
             rgba(50, 31, 219, .9) 22%,
             rgba(243, 66, 43, .9) 63%,
             rgba(243, 66, 43, .9) 63%,
-            rgba(243, 66, 43, .9) 100%),
+            rgba(243, 66, 43, 1) 100%),
         url(../img/home-bg.png);
     background-repeat:
         no-repeat,
@@ -135,6 +135,10 @@ ul {
     box-shadow: -3px 5px 0px -3px #f3412a;
 }
 
+.site-header__text-bg {
+    line-height: 3rem;
+}
+
 .link {
     text-decoration: none;
     color: #f3412b;
@@ -149,7 +153,7 @@ ul {
     position: fixed;
     width: 100%;
     z-index: 1;
-    background-color: #d4d4d4;
+    background-color: transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -172,7 +176,7 @@ ul {
 }
 
 .site-nav__link--active {
-    color: #d4d4d4;
+    color: #fff;
     position: relative;
     display: inline-block;
 }
@@ -225,6 +229,7 @@ ul {
 .quien-soy__profile-container p {
     width: 405px;
     color: #7300b4;
+    text-align: justify;
 }
 
 .quien-soy__profile-container p + p {
@@ -235,6 +240,8 @@ ul {
 
 .estudios {
     background-color: #1d00ff;
+    background-image: url(../img/);
+    background-position: left bottom;
     color: #d4d4d4;
     display: flex;
     padding: 80px 40px;
@@ -267,6 +274,31 @@ ul {
     display: flex;
     padding: 80px 40px;
     min-height: 100%;
+    color: #1d00ff;
+}
+
+.experiencia p {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    text-align: justify;
+}
+
+/**/
+
+.sobre-mi {
+    display: flex;
+    padding: 80px 40px;
+    background-image: url(../img/tururu.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    align-items: center;
+}
+
+.sobre-mi__video {
+    height: 500px;
+    margin-left: 30px;
+
 }
 
 /**/
@@ -274,14 +306,16 @@ ul {
 .contacto {
     display: flex;
     min-height: 100%;
+    background-color: #000;
+    padding: 80px 40px;
 }
 
 .contacto__form {
-    width: 40%;
+    /*width: 40%;*/
     height: 100%;
-    padding: 80px 40px;
-    background-color: #000;
-    color: #fff;
+    padding: 40px;
+    color: #d4d4d4;
+    border: #d4d4d4 solid thin;
 }
 
 .label {
@@ -303,7 +337,7 @@ ul {
     width: 100%;
     background-color: #000;
     color: #d4d4d4;
-    border: #fff solid thin;
+    border: #d4d4d4 solid thin;
     margin-top: 5px;
 }
 
@@ -312,8 +346,8 @@ ul {
 }
 
 .btn {
-    background-color: #f3412b;
-    color: #fff;
+    background-color: #fff;
+    color: #000;
     border: none;
     border-radius: 0;
     padding: 10px 15px;
@@ -325,10 +359,46 @@ ul {
 .btn:focus,
 .btn:active {
     background-color: #1d00ff;
+    color: #fff;
 }
 
 .btn-submit {
 
+}
+
+.contacto-links {
+    line-height: 2rem;
+    padding-left: 40px;
+    margin-top: 0;
+    margin-bottom: 70px;
+}
+
+.contacto-figure {
+    color: #fff;
+    margin: 0;
+}
+
+.contacto-figure__img {
+    width: 80%;
+    opacity: .75;
+    margin-left: 40px;
+    display: block;
+    border: #fff solid thin;
+    filter: grayscale(100%);
+}
+
+.contacto-figure__figcaption {
+    margin-left: 40px;
+    margin-top: 10px;
+    color: #fff;
+}
+
+/**/
+
+.footer {
+    text-align: center;
+    background-color: #1d00ff;
+    color: #fff;
 }
 
 /* helpers */
@@ -346,7 +416,6 @@ ul {
     display: inline;
     white-space: pre-wrap;
     padding: 0 10px 1px 0;
-    line-height: 3rem;
 }
 
 .text-bg:after {
@@ -360,20 +429,20 @@ ul {
 
 .text-bg--black,
 .text-bg--black:after {
-    background-color: rgba(0, 0, 0, .4);
+    background-color: rgba(0, 0, 0, .8);
 }
 
 .text-bg--black {
-    border: 0 solid rgba(0, 0, 0, .4);
+    border: 0 solid rgba(0, 0, 0, .8);
 }
 
 .text-bg--white,
 .text-bg--white:after {
-    background-color: rgba(0, 0, 0, .4);
+    background-color: rgba(255, 255, 255, .8);
 }
 
 .text-bg--white {
-    border: 0 solid rgba(0, 0, 0, .4);
+    border: 0 solid rgba(255, 255, 255, .8);
 }
 
 .text-bg--orange,
