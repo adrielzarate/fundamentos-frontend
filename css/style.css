@@ -277,10 +277,16 @@ ul {
     color: #1d00ff;
 }
 
+.experiencia > div {
+    border: #1d00ff solid 2px;
+    padding: 30px 45px;
+}
+
 .experiencia p {
-    font-size: 1.5rem;
+    /*font-size: 1.5rem;*/
     line-height: 2rem;
     text-align: justify;
+    max-width: 50%;
 }
 
 /**/
