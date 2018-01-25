@@ -47,8 +47,170 @@ ul {
     padding: 0;
 }
 
-.h-100 {
-    min-height: 100%;
+[data-position="portada"] .site-nav__link-home {
+    color: #fff;
+    position: relative;
+    display: inline-block;
+}
+
+[data-position="portada"] .site-nav__link-home:hover {
+    text-decoration: none;
+    color: #d4d4d4;
+}
+
+[data-position="portada"] .site-nav__link-home::after {
+    content: "";
+    display: block;
+    background-color: #1d00ff;
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    top: 2%;
+    left: -5%;
+    z-index: -1;
+}
+
+[data-position="portada"] .site-nav .link {
+    color: #fff;
+}
+
+[data-position="quienSoy"] .site-nav__link-quien-soy {
+    color: #fff;
+    position: relative;
+    display: inline-block;
+}
+
+[data-position="quienSoy"] .site-nav__link-quien-soy:hover {
+    text-decoration: none;
+    color: #d4d4d4;
+}
+
+[data-position="quienSoy"] .site-nav__link-quien-soy::after {
+    content: "";
+    display: block;
+    background-color: #1d00ff;
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    top: 2%;
+    left: -5%;
+    z-index: -1;
+}
+
+[data-position="quienSoy"] .site-nav {
+    background-color: #d4d4d4;
+}
+
+[data-position="estudios"] .site-nav__link-estudios {
+    color: #fff;
+    position: relative;
+    display: inline-block;
+}
+
+[data-position="estudios"] .site-nav__link-estudios:hover {
+    text-decoration: none;
+    color: #d4d4d4;
+}
+
+[data-position="estudios"] .site-nav__link-estudios::after {
+    content: "";
+    display: block;
+    background-color: #1d00ff;
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    top: 2%;
+    left: -5%;
+    z-index: -1;
+}
+
+[data-position="estudios"] .site-nav {
+    background-color: #1d00ff;
+}
+
+[data-position="estudios"] .site-nav .link:hover {
+    color: #fff;
+}
+
+[data-position="estudios"] .site-nav .site-nav__link-home {
+    color: #f3412b;
+}
+
+[data-position="experiencia"] .site-nav__link-experiencia {
+    color: #fff;
+    position: relative;
+    display: inline-block;
+}
+
+[data-position="experiencia"] .site-nav__link-experiencia:hover {
+    text-decoration: none;
+    color: #d4d4d4;
+}
+
+[data-position="experiencia"] .site-nav__link-experiencia::after {
+    content: "";
+    display: block;
+    background-color: #1d00ff;
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    top: 2%;
+    left: -5%;
+    z-index: -1;
+}
+
+[data-position="experiencia"] .site-nav {
+    background-color: #fff;
+}
+
+[data-position="sobreMi"] .site-nav__link-sobre-mi {
+    color: #fff;
+    position: relative;
+    display: inline-block;
+}
+
+[data-position="sobreMi"] .site-nav__link-sobre-mi:hover {
+    text-decoration: none;
+    color: #d4d4d4;
+}
+
+[data-position="sobreMi"] .site-nav__link-sobre-mi::after {
+    content: "";
+    display: block;
+    background-color: #1d00ff;
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    top: 2%;
+    left: -5%;
+    z-index: -1;
+}
+
+[data-position="contacto"] .site-nav__link-contacto {
+    color: #fff;
+    position: relative;
+    display: inline-block;
+}
+
+[data-position="contacto"] .site-nav__link-contacto:hover {
+    text-decoration: none;
+    color: #d4d4d4;
+}
+
+[data-position="contacto"] .site-nav__link-contacto::after {
+    content: "";
+    display: block;
+    background-color: #1d00ff;
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    top: 2%;
+    left: -5%;
+    z-index: -1;
+}
+
+[data-position="contacto"] .site-nav {
+    background-color: #000;
 }
 
 .site-header {
@@ -161,6 +323,7 @@ ul {
     padding-right: 40px;
     font-weight: 500;
     border-bottom: #f3412b solid thin;
+    transition: background-color .5s ease;
 }
 
 .site-nav__link-home {
@@ -173,29 +336,6 @@ ul {
 
 .item-list-inline ~ .item-list-inline {
     margin-left: 10px;
-}
-
-.site-nav__link--active {
-    color: #fff;
-    position: relative;
-    display: inline-block;
-}
-
-.site-nav__link--active:hover {
-    text-decoration: none;
-    color: #d4d4d4;
-}
-
-.site-nav__link--active::after {
-    content: "";
-    display: block;
-    background-color: #1d00ff;
-    position: absolute;
-    width: 110%;
-    height: 110%;
-    top: 2%;
-    left: -5%;
-    z-index: -1;
 }
 
 /**/
@@ -408,6 +548,10 @@ ul {
 }
 
 /* helpers */
+
+.h-100 {
+    min-height: 100%;
+}
 
 .--regular {
     font-weight: 400;

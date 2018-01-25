@@ -2,10 +2,11 @@
     const $body = document.body;
     const $siteNav = document.querySelector('.site-nav');
     const $siteNavLinks = $siteNav.querySelectorAll('.link');
+    const bodyPosition = document.querySelector('[data-position]');
 
 /*
     const $contacto = document.querySelector('.contacto');
-    const $contacto__name = $contacto.querySelector('.contacto__name');
+    const $contacto__name = $siteSections.contacto.querySelector('.contacto__name');
     const $contacto__email = $contacto.querySelector('.contacto__email');
     const $contacto__phone = $contacto.querySelector('.contacto__phone');
 */
@@ -63,46 +64,44 @@
         return obj;
     }
 
-    const quienSoy    = ElementData('quienSoy');
-    const estudios    = ElementData('estudios');
-    const experiencia = ElementData('experiencia');
-    const sobreMi     = ElementData('sobreMi');
-    const contacto    = ElementData('contacto');
+    let siteSections = {
+        portada     : ElementData('portada'),
+        quienSoy    : ElementData('quienSoy'),
+        estudios    : ElementData('estudios'),
+        experiencia : ElementData('experiencia'),
+        sobreMi     : ElementData('sobreMi'),
+        contacto    : ElementData('contacto')
+    }
 
     let scrollPosition = window.scrollY;
 
-    // let quienSoyTop    = $quienSoy.getBoundingClientRect().top;
-    // let quienSoyEnd    = quienSoyTop + $quienSoy.getBoundingClientRect().height;
-
-    // let estudiosTop    = $estudios.getBoundingClientRect().top;
-    // let estudiosEnd    = estudiosTop + $estudios.getBoundingClientRect().height;
-
-    // let experienciaTop = $experiencia.getBoundingClientRect().top;
-    // let experienciaEnd = experienciaTop + $experiencia.getBoundingClientRect().height;
-
-    // let sobreMiTop     = $sobreMi.getBoundingClientRect().top;
-    // let sobreMiEnd     = sobreMiTop + $sobreMi.getBoundingClientRect().height;
-
-    // let contactoTop    = $contacto.getBoundingClientRect().top;
-    // let contactoEnd    = contactoTop + $contacto.getBoundingClientRect().height;
-
     function scrollViewer(actualScroll) {
 
-        $siteNav.querySelector('.site-nav__link--active').classList.remove('site-nav__link--active');
+        if (actualScroll < siteSections.quienSoy.init) {
 
-        if (actualScroll > quienSoy.init && actualScroll < quienSoy.end) {
-            $siteNav.querySelector('.site-nav__link-quien-soy').classList.add('site-nav__link--active');
-        } else if (actualScroll > estudios.init && actualScroll < estudios.end) {
-            $siteNav.querySelector('.site-nav__link-estudios').classList.add('site-nav__link--active');
-        } else if (actualScroll > experiencia.init && actualScroll < experiencia.end) {
-            $siteNav.querySelector('.site-nav__link-experiencia').classList.add('site-nav__link--active');
-        } else if (actualScroll > sobreMi.init && actualScroll < sobreMi.end) {
-            $siteNav.querySelector('.site-nav__link-sobre-mi').classList.add('site-nav__link--active');
-        } else if (actualScroll > contacto.init) {
-            $siteNav.querySelector('.site-nav__link-contacto').classList.add('site-nav__link--active');
-        } else {
-            $siteNav.querySelector('.site-nav__link-home').classList.add('site-nav__link--active');
+            $body.setAttribute('data-position', 'portada');
+
+        } else if (actualScroll > siteSections.quienSoy.init && actualScroll < siteSections.quienSoy.end) {
+
+            $body.setAttribute('data-position', 'quienSoy');
+
+        } else if (actualScroll > siteSections.estudios.init && actualScroll < siteSections.estudios.end) {
+
+            $body.setAttribute('data-position', 'estudios');
+
+        } else if (actualScroll > siteSections.experiencia.init && actualScroll < siteSections.experiencia.end) {
+
+            $body.setAttribute('data-position', 'experiencia');
+
+        } else if (actualScroll > siteSections.sobreMi.init && actualScroll < siteSections.sobreMi.end) {
+
+            $body.setAttribute('data-position', 'sobreMi');
+
+        } else if (actualScroll > siteSections.contacto.init) {
+
+            $body.setAttribute('data-position', 'contacto');
         }
+
     }
 
     window.addEventListener('scroll', function(){
@@ -110,24 +109,50 @@
         scrollViewer(scrollPosition);
     });
 
+    window.addEventListener('resize', function(event){
+        scrollPosition = window.scrollY;
+        siteSections = {
+            portada     : ElementData('portada'),
+            quienSoy    : ElementData('quienSoy'),
+            estudios    : ElementData('estudios'),
+            experiencia : ElementData('experiencia'),
+            sobreMi     : ElementData('sobreMi'),
+            contacto    : ElementData('contacto')
+        }
+    });
+
     scrollViewer(scrollPosition);
 
     $siteNavLinks.forEach( $siteNavLink => {
             $siteNavLink.addEventListener('click', function(e) {
                 e.preventDefault();
-                let toSection = this.href.split('#')[1] + 'Top';
+                let toSection = this.href.split('#')[1];
 
-                // $siteNav.querySelector('.site-nav__link--active').classList.remove('site-nav__link--active');
-                // this.classList.add('site-nav__link--active');
+                for ( el in siteSections ) {
+                    if ( el == toSection ) {
+                        goToSection(siteSections[el]);
+                    }
+                }
+
             });
         }
     );
 
-    function goToSection(sectionName) {
-        if( scrollPosition < sectionName) {
-            document.documentElement.scrollTop += 10;
+    function goToSection(goToEl) {
+
+        // var jump = parseInt(goToEl.init * 0.3);
+        var jump = parseInt(goToEl.el.getBoundingClientRect().top * 0.5);
+
+        document.documentElement.scrollTop += jump;
+
+        if ( !goToEl.lastJump || goToEl.lastJump > Math.abs(jump) ) {
+            goToEl.lastJump = Math.abs(jump);
+            setTimeout(function() {
+                goToSection(goToEl);
+            }, 25);
+        } else {
+            goToEl.lastJump = null;
         }
     }
-
 
 })();
