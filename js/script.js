@@ -1,4 +1,4 @@
-(function() {
+window.addEventListener('load', function() {
     const $body = document.body;
     const $siteNav = document.querySelector('.site-nav');
     const $siteNavLinks = $siteNav.querySelectorAll('.link');
@@ -60,7 +60,10 @@
         const obj = {};
         obj.el = document.querySelector('#'+element);
         obj.init = obj.el.offsetTop;
-        obj.end = obj.init + obj.el.getBoundingClientRect().height;
+        obj.end = obj.init + obj.el.offsetHeight;
+
+        obj.h = obj.el.offsetHeight;
+
         return obj;
     }
 
@@ -81,23 +84,23 @@
 
             $body.setAttribute('data-position', 'portada');
 
-        } else if (actualScroll > siteSections.quienSoy.init && actualScroll < siteSections.quienSoy.end) {
+        } else if (actualScroll >= siteSections.quienSoy.init && actualScroll < siteSections.quienSoy.end) {
 
             $body.setAttribute('data-position', 'quienSoy');
 
-        } else if (actualScroll > siteSections.estudios.init && actualScroll < siteSections.estudios.end) {
+        } else if (actualScroll >= siteSections.estudios.init && actualScroll < siteSections.estudios.end) {
 
             $body.setAttribute('data-position', 'estudios');
 
-        } else if (actualScroll > siteSections.experiencia.init && actualScroll < siteSections.experiencia.end) {
+        } else if (actualScroll >= siteSections.experiencia.init && actualScroll < siteSections.experiencia.end) {
 
             $body.setAttribute('data-position', 'experiencia');
 
-        } else if (actualScroll > siteSections.sobreMi.init && actualScroll < siteSections.sobreMi.end) {
+        } else if (actualScroll >= siteSections.sobreMi.init && actualScroll < siteSections.sobreMi.end) {
 
             $body.setAttribute('data-position', 'sobreMi');
 
-        } else if (actualScroll > siteSections.contacto.init) {
+        } else if (actualScroll >= siteSections.contacto.init) {
 
             $body.setAttribute('data-position', 'contacto');
         }
@@ -140,19 +143,22 @@
 
     function goToSection(goToEl) {
 
-        // var jump = parseInt(goToEl.init * 0.3);
-        var jump = parseInt(goToEl.el.getBoundingClientRect().top * 0.5);
-
+        var jump = parseInt(goToEl.el.getBoundingClientRect().top * .3);
         document.documentElement.scrollTop += jump;
 
-        if ( !goToEl.lastJump || goToEl.lastJump > Math.abs(jump) ) {
+        if ( goToEl.el.getBoundingClientRect().top != 0 ) {
+
             goToEl.lastJump = Math.abs(jump);
+
             setTimeout(function() {
+                if ( goToEl.lastJump < 5 ) {
+                    document.documentElement.scrollTop += goToEl.el.getBoundingClientRect().top;
+                    goToEl.lastJump = 0;
+                }
                 goToSection(goToEl);
             }, 25);
-        } else {
-            goToEl.lastJump = null;
+
         }
     }
 
-})();
+});
