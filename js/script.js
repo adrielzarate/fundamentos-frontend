@@ -1,59 +1,166 @@
 window.addEventListener('load', function() {
-    const $body = document.body;
-    const $siteNav = document.querySelector('.site-nav');
-    const $siteNavLinks = $siteNav.querySelectorAll('.link');
-    const bodyPosition = document.querySelector('[data-position]');
 
-/*
-    const $contacto = document.querySelector('.contacto');
-    const $contacto__name = $siteSections.contacto.querySelector('.contacto__name');
-    const $contacto__email = $contacto.querySelector('.contacto__email');
-    const $contacto__phone = $contacto.querySelector('.contacto__phone');
-*/
+    const $body                 = document.body;
+    const $siteNav              = document.querySelector('.site-nav');
+    const $siteNavLinks         = $siteNav.querySelectorAll('.link');
 
-    // function customInvalidMsg(el, msg) {
-    //     console.log(this);
-    //     el.addEventListener("invalid", function() { this.setCustomValidity(msg) });
-    // }
+    const $contactForm          = document.querySelector('.contacto__form');
+    const $contactFormName      = $contactForm.querySelector('#name');
+    const $contactFormEmail     = $contactForm.querySelector('#email');
 
-    // customInvalidMsg($contacto__name, 'Tu nombre es obligatorio');
-    // customInvalidMsg($contacto__email, 'Tu correo es obligatorio');
-    // customInvalidMsg($contacto__phone, 'Tu numero de telefono es obligatorio');
+    const $networkingOpts       = $contactForm.querySelector('.networking-opts');
+    const $networking           = {
+                                    fb : document.querySelector('.networking-opts__fb'),
+                                    tw : document.querySelector('.networking-opts__tw'),
+                                    gh : document.querySelector('.networking-opts__gh'),
+                                    ev : document.querySelector('.networking-opts__ev'),
+                                    ot : document.querySelector('.networking-opts__ot')
+                                  };
+    const $networkingOptOther   = document.querySelector('.networking-opts__other');
 
-/*
-    $contacto__name.addEventListener('invalid', function() {
-        if(this.validity.valueMissing) {
-            this.setCustomValidity('msg1');
-        } else {
-            this.setCustomValidity('');
+    const $contactFormPhone     = $contactForm.querySelector('#phone');
+    const $contactFormMessage   = $contactForm.querySelector('#message');
+    const arrayInputs = [$contactFormName, $contactFormEmail, $contactFormPhone, $contactFormMessage];
+
+    // remove "empty filed" message in multiple inputs at keyup event
+
+    arrayInputs.forEach( inputItem => {
+        inputItem.addEventListener('keyup', function(e) {
+            if (this.value != ' ' && this.value != '\n') {
+                this.parentNode.classList.remove('contact-item--empty');
+                this.parentNode.classList.remove('contact-item-other--empty');
+            }
+        });
+    });
+
+    // remove "empty filed" message in option "otro" at keyup event
+
+    $networkingOptOther.addEventListener('keyup', function(e) {
+        if (this.value != ' ' && this.value != '\n') {
+            $networkingOpts.classList.remove('contact-item-other--empty');
         }
-    }, false);
-    $contacto__email.addEventListener('invalid', function() {
+    });
 
-        console.log('this.willValidate: ', this.willValidate);
-        console.log('Validates: ', this.validity.valid);
-        console.log('Value missing: ', this.validity.valueMissing);
-        console.log('------------------');
+    // toggle "required" attr in networking input text "otro"
 
-        if(this.validity.valueMissing) {
-            this.setCustomValidity('msg2');
-        } else {
-            this.setCustomValidity('');
+    for ( let opt in $networking ) {
+        $networking[opt].addEventListener('change', function(e) {
+            if( opt == 'ot' && this.checked == true ) {
+                $networkingOptOther.required = true;
+            } else {
+                $networkingOptOther.required = false;
+                $networkingOptOther.value = '';
+            }
+            $networkingOpts.classList.remove('contact-item--empty');
+            $networkingOpts.classList.remove('contact-item-other--empty');
+        });
+    }
+
+    // words counter function
+
+    function wordsCount() {
+        var words = 0;
+        var onWord = false;
+        for (var i = 0; i < $contactFormMessage.value.length; i++) {
+            if ($contactFormMessage.value[i] != ' ' && $contactFormMessage.value[i] != '\n') {
+                if (onWord == false) {
+                    words++;
+                    onWord = true;
+                }
+            } else {
+                onWord = false;
+            }
         }
-    }, false);
-    $contacto__phone.addEventListener('invalid', function() {
-        // this.setCustomValidity('msg3');
-        if(this.validity.valueMissing) {
-            this.setCustomValidity('msg3');
-        } else {
-            this.setCustomValidity('');
-        }
-    }, false);
-*/
+        return words;
+    }
 
-    // $contacto__name.addEventListener("invalid", customInvalidMsg, false);
-    // $contacto__email.addEventListener("invalid", customInvalidMsg, false);
-    // $contacto__phone.addEventListener("invalid", customInvalidMsg, false);
+    // textarea "keyup" event for words count
+
+    $contactFormMessage.addEventListener('keyup', function(e) {
+        var totalWords = wordsCount();
+        if(totalWords >= 150) {
+            this.parentNode.classList.add('contact-item--limit');
+            this.value = this.value.trim();
+        } else {
+            this.parentNode.classList.remove('contact-item--limit');
+        }
+    });
+
+    // form submit validation
+
+    $contactForm.addEventListener('submit', function(e) {
+
+        // field name
+
+        if( $contactFormName.checkValidity() === false ) {
+            $contactFormName.focus();
+            $contactFormName.parentNode.classList.add('contact-item--empty');
+            e.preventDefault();
+            return false;
+        } else {
+            $contactFormName.parentNode.classList.remove('contact-item--empty');
+        }
+
+        // field email
+
+        if( $contactFormEmail.checkValidity() === false ) {
+            $contactFormEmail.focus();
+            $contactFormEmail.parentNode.classList.add('contact-item--empty');
+            e.preventDefault();
+            return false;
+        } else {
+            $contactFormEmail.parentNode.classList.remove('contact-item--empty');
+        }
+
+        // radio options networking
+
+        if( $networking.fb.checkValidity() === false ) {
+            $networkingOpts.classList.add('contact-item--empty');
+            e.preventDefault();
+            return false;
+        } else {
+            $networkingOpts.classList.remove('contact-item--empty');
+            $networkingOpts.classList.remove('contact-item-other--empty');
+        }
+
+        // field networking "otro"
+
+        if( $networkingOptOther.checkValidity() === false ) {
+            $networkingOptOther.focus();
+            $networkingOpts.classList.add('contact-item-other--empty');
+            e.preventDefault();
+            return false;
+        } else {
+            $networkingOpts.classList.remove('contact-item-other--empty');
+        }
+
+        // field phone
+
+        const phoneRegex = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{6})$/;
+        let phoneValidation = phoneRegex.test($contactFormPhone.value);
+
+        if( phoneValidation === false ) {
+            $contactFormPhone.focus();
+            $contactFormPhone.parentNode.classList.add('contact-item--empty');
+            e.preventDefault();
+            return false;
+        } else {
+            $contactFormPhone.parentNode.classList.remove('contact-item--empty');
+        }
+
+        // field message
+
+        if( $contactFormMessage.checkValidity() === false ) {
+            $contactFormMessage.focus();
+            $contactFormMessage.parentNode.classList.add('contact-item--empty');
+            e.preventDefault();
+            return false;
+        } else {
+            $contactFormMessage.parentNode.classList.remove('contact-item--empty');
+        }
+
+    });
+
 
 
     function ElementData(element) {
@@ -106,6 +213,8 @@ window.addEventListener('load', function() {
         }
 
     }
+
+    /* SCROLL */
 
     window.addEventListener('scroll', function(){
         scrollPosition = window.scrollY;

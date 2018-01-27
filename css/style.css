@@ -455,7 +455,6 @@ ul {
 }
 
 .contacto__form {
-    /*width: 40%;*/
     height: 100%;
     padding: 40px;
     color: #d4d4d4;
@@ -473,7 +472,13 @@ ul {
 }
 
 .contact-item {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.contact-item--empty .contacto__field-required-msg,
+.contact-item--limit .contacto__field-limit-msg,
+.contact-item-other--empty .contacto__field-required-opts-other {
+    display: block;
 }
 
 .input-field {
@@ -487,6 +492,16 @@ ul {
 
 .input-field--disabled {
     border-color: #333;
+}
+
+.contacto__field-required-msg,
+.contacto__field-limit-msg,
+.contacto__field-required-opts-other {
+    font-size: .8rem;
+    margin-top: 5px;
+    color: #7300b4;
+    display: none;
+    position: absolute;
 }
 
 .btn {
@@ -505,6 +520,16 @@ ul {
     background-color: #1d00ff;
     color: #fff;
 }
+
+.networking-opts__ot + .input-field {
+  display: none;
+}
+
+.networking-opts__ot:checked + .input-field {
+  display: block;
+}
+
+.networking-opts__other {}
 
 .btn-submit {
 
@@ -546,6 +571,10 @@ ul {
 }
 
 /* helpers */
+
+.d-none {
+    display: none;
+}
 
 .h-100 {
     min-height: 100%;

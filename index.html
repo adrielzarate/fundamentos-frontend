@@ -134,40 +134,56 @@
 
     <section class="contacto h-100" id="contacto">
         <div class="col-50">
-            <form class="contacto__form" action="">
+
+            <form class="contacto__form" method="get" novalidate>
 
                 <div class="contact-item">
                     <label class="label" for="name">Nombre</label>
-                    <input class="contacto__name input-field" id="name" type="text" placeholder="Nombre remitente" required>
+                    <input class="contacto__name input-field" id="name" type="text" name="name" placeholder="Nombre remitente" required>
+                    <div class="contacto__field-required-msg">Para enviar, completa este campo con tu nombre</div>
                 </div>
 
                 <div class="contact-item">
                     <label class="label" for="email">Email</label>
-                    <input class="contacto__email input-field" id="email" type="email" placeholder="email@example.com" required>
+                    <input class="contacto__email input-field" id="email" type="email" name="email" placeholder="email@example.com" required>
+                    <div class="contacto__field-required-msg">Para enviar, completa este campo con tu correo</div>
                 </div>
 
-                <fieldset class="fieldset contact-item">
+                <fieldset class="fieldset contact-item networking-opts">
+
                     <legend class="label">Como me has conocido</legend>
-                    <label class="label"><input type="radio" name="networking" value="fb"> Facebook</label>
-                    <label class="label"><input type="radio" name="networking" value="tw"> Twitter</label>
-                    <label class="label"><input type="radio" name="networking" value="gt"> Github</label>
-                    <label class="label"><input type="radio" name="networking" value="ev"> Evento</label>
-                    <label class="label"><input type="radio" name="networking" value="ot"> Otro</label>
-                    <input class="input-field input-field--disabled" type="text" placeholder="De que otra manera me conociste?" name="networking">
+
+                    <label class="label"><input class="networking-opts__fb" type="radio" name="networking" value="fb" required> Facebook</label>
+                    <label class="label"><input class="networking-opts__tw" type="radio" name="networking" value="tw"> Twitter</label>
+                    <label class="label"><input class="networking-opts__gh" type="radio" name="networking" value="gh"> Github</label>
+                    <label class="label"><input class="networking-opts__ev" type="radio" name="networking" value="ev"> Evento</label>
+
+                    <label class="label">
+                        <input class="networking-opts__ot" type="radio" name="networking" value="ot"> Otro
+                        <input class="input-field networking-opts__other" type="text" name="networking" placeholder="De que otra manera me conociste?">
+                    </label>
+
+                    <div class="contacto__field-required-msg">Para enviar, coloca una de las opciones</div>
+                    <div class="contacto__field-required-opts-other">Cuentame de que manera me conociste</div>
+
                 </fieldset>
 
                 <div class="contact-item">
                     <label class="label" for="phone">Numero de contacto</label>
-                    <input class="contacto__phone input-field" id="phone" type="telephone" pattern="/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/" placeholder="(549) 2616006866" required>
+                    <input class="contacto__phone input-field" id="phone" type="text" name="phone" placeholder="+XX XXXX XXXXXX" required>
+                    <div class="contacto__field-required-msg">Para enviar, completa este campo con tu telefono como +XX XXXX XXXXXX</div>
                 </div>
 
                 <div class="contact-item">
                     <label class="label" for="message">Mensaje</label>
-                    <textarea class="input-field" id="message" name="message"></textarea>
+                    <textarea class="input-field" id="message" name="message" required></textarea>
+                    <div class="contacto__field-required-msg">Para enviar, completa este campo con un mensaje</div>
+                    <div class="contacto__field-limit-msg">Llegaste al numero maximo de 150 palabras en este campo</div>
                 </div>
 
                 <button class="btn btn-submit" type="submit">Enviar</button>
             </form>
+
         </div>
         <div class="col-50">
             <ul class="contacto-links">
