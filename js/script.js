@@ -1,8 +1,28 @@
 window.addEventListener('load', function() {
 
     const $body                 = document.body;
+
+    // navigation elements
+
     const $siteNav              = document.querySelector('.site-nav');
     const $siteNavLinks         = $siteNav.querySelectorAll('.link');
+
+    // experiencia elements
+
+    const $experienciaGithub    = document.querySelector('.experiencia__github');
+
+    const $githubLoading        = $experienciaGithub.querySelector('.github__loading');
+    const $githubFile           = $experienciaGithub.querySelector('.github-file');
+
+    const $githubUserName       = $experienciaGithub.querySelector('.github-file__username');
+    const $githubBio            = $experienciaGithub.querySelector('.github-file__bio');
+    const $githubPic            = $experienciaGithub.querySelector('.github-file__pic');
+    const $githubLocation       = $experienciaGithub.querySelector('.github-file__location');
+    const $githubCreatedAt      = $experienciaGithub.querySelector('.github-file__created-at');
+    const $githubPublicRepos    = $experienciaGithub.querySelector('.github-file__public-repos');
+    const $githubFollowers      = $experienciaGithub.querySelector('.github-file__followers');
+
+    // contact elements
 
     const $contactForm          = document.querySelector('.contacto__form');
     const $contactFormName      = $contactForm.querySelector('#name');
@@ -20,7 +40,12 @@ window.addEventListener('load', function() {
 
     const $contactFormPhone     = $contactForm.querySelector('#phone');
     const $contactFormMessage   = $contactForm.querySelector('#message');
+
     const arrayInputs = [$contactFormName, $contactFormEmail, $contactFormPhone, $contactFormMessage];
+
+    let totalWords;
+
+    /* FORM VALIDATION */
 
     // remove "empty filed" message in multiple inputs at keyup event
 
@@ -77,12 +102,19 @@ window.addEventListener('load', function() {
     // textarea "keyup" event for words count
 
     $contactFormMessage.addEventListener('keyup', function(e) {
-        var totalWords = wordsCount();
-        if(totalWords >= 150) {
+        totalWords = wordsCount();
+        if(totalWords == 150) {
+            this.parentNode.classList.remove('contact-item--more-limit');
             this.parentNode.classList.add('contact-item--limit');
+            this.value = this.value.trim();
+        } else if (totalWords > 150) {
+            this.parentNode.classList.remove('contact-item--limit');
+            this.parentNode.classList.add('contact-item--more-limit');
+            document.querySelector('.contacto__field-more-limit-msg span').innerHTML = totalWords;
             this.value = this.value.trim();
         } else {
             this.parentNode.classList.remove('contact-item--limit');
+            this.parentNode.classList.remove('contact-item--more-limit');
         }
     });
 
@@ -159,6 +191,14 @@ window.addEventListener('load', function() {
             $contactFormMessage.parentNode.classList.remove('contact-item--empty');
         }
 
+        if(totalWords > 150 ) {
+            $contactFormMessage.focus();
+            $contactFormMessage.parentNode.classList.add('.contact-item--more-limit');
+            e.preventDefault();
+            return false;
+        } else {
+            $contactFormMessage.parentNode.classList.remove('.contact-item--more-limit');
+        }
     });
 
     /* SCROLL */
@@ -211,7 +251,6 @@ window.addEventListener('load', function() {
 
             $body.setAttribute('data-position', 'contacto');
         }
-
     }
 
     window.addEventListener('scroll', function(){
@@ -270,19 +309,6 @@ window.addEventListener('load', function() {
 
     /* AJAX */
 
-    const $experienciaGithub = document.querySelector('.experiencia__github');
-
-    const $githubLoading     = $experienciaGithub.querySelector('.github__loading');
-    const $githubFile        = $experienciaGithub.querySelector('.github-file');
-
-    const $githubUserName    = $experienciaGithub.querySelector('.github-file__username');
-    const $githubBio         = $experienciaGithub.querySelector('.github-file__bio');
-    const $githubPic         = $experienciaGithub.querySelector('.github-file__pic');
-    const $githubLocation    = $experienciaGithub.querySelector('.github-file__location');
-    const $githubCreatedAt   = $experienciaGithub.querySelector('.github-file__created-at');
-    const $githubPublicRepos = $experienciaGithub.querySelector('.github-file__public-repos');
-    const $githubFollowers   = $experienciaGithub.querySelector('.github-file__followers');
-
     const xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://api.github.com/users/adrielzarate', true);
 
@@ -290,8 +316,6 @@ window.addEventListener('load', function() {
     xhr.onreadystatechange = function() {
         if( xhr.readyState == 4 && xhr.status == 200 ) {
             const response = JSON.parse(xhr.responseText);
-
-            console.table(response)
 
             $githubLoading.classList.add('d-none');
             $githubFile.classList.remove('d-none');
