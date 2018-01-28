@@ -161,7 +161,7 @@ window.addEventListener('load', function() {
 
     });
 
-
+    /* SCROLL */
 
     function ElementData(element) {
         const obj = {};
@@ -214,8 +214,6 @@ window.addEventListener('load', function() {
 
     }
 
-    /* SCROLL */
-
     window.addEventListener('scroll', function(){
         scrollPosition = window.scrollY;
         scrollViewer(scrollPosition);
@@ -253,6 +251,7 @@ window.addEventListener('load', function() {
     function goToSection(goToEl) {
 
         var jump = parseInt(goToEl.el.getBoundingClientRect().top * .3);
+        document.body.scrollTop += jump; // MS Edge
         document.documentElement.scrollTop += jump;
 
         if ( goToEl.el.getBoundingClientRect().top != 0 ) {
@@ -266,8 +265,53 @@ window.addEventListener('load', function() {
                 }
                 goToSection(goToEl);
             }, 25);
-
         }
     }
+
+    /* AJAX */
+
+    const $experienciaGithub = document.querySelector('.experiencia__github');
+
+    const $githubLoading     = $experienciaGithub.querySelector('.github__loading');
+    const $githubFile        = $experienciaGithub.querySelector('.github-file');
+
+    const $githubUserName    = $experienciaGithub.querySelector('.github-file__username');
+    const $githubBio         = $experienciaGithub.querySelector('.github-file__bio');
+    const $githubPic         = $experienciaGithub.querySelector('.github-file__pic');
+    const $githubLocation    = $experienciaGithub.querySelector('.github-file__location');
+    const $githubCreatedAt   = $experienciaGithub.querySelector('.github-file__created-at');
+    const $githubPublicRepos = $experienciaGithub.querySelector('.github-file__public-repos');
+    const $githubFollowers   = $experienciaGithub.querySelector('.github-file__followers');
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://api.github.com/users/adrielzarate', true);
+
+    // xhr.onload = function () {};
+    xhr.onreadystatechange = function() {
+        if( xhr.readyState == 4 && xhr.status == 200 ) {
+            const response = JSON.parse(xhr.responseText);
+
+            console.table(response)
+
+            $githubLoading.classList.add('d-none');
+            $githubFile.classList.remove('d-none');
+
+            $githubFile.href             = response.html_url;
+            $githubUserName.innerHTML    = response.login;
+            $githubBio.innerHTML         = response.bio;
+            $githubPic.src               = response.avatar_url;
+            $githubLocation.innerHTML    = response.location;
+            $githubCreatedAt.innerHTML   = response.created_at.slice(0,4);
+            $githubCreatedAt.datetime    = response.created_at;
+            $githubPublicRepos.innerHTML = response.public_repos;
+            $githubFollowers.innerHTML   = response.followers;
+        } else {
+            console.log('error!');
+        }
+        console.log('readyState ' + xhr.readyState);
+        console.log('status ' + xhr.status);
+    }
+
+    xhr.send(null);
 
 });

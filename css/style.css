@@ -419,12 +419,72 @@ ul {
 .experiencia > div {
     border: #1d00ff solid 2px;
     padding: 30px 45px;
+    position: relative;
 }
 
 .experiencia p {
     line-height: 2rem;
     text-align: justify;
     max-width: 50%;
+}
+
+.experiencia__github {
+    position: absolute;
+    top: 30px;
+    right: 45px;
+    width: 350px;
+    background-color: #f3412b;
+    padding: 20px;
+}
+
+.github__loading p {
+    color: #fff;
+    text-align: center;
+    max-width: 100%;
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+.github__loading::before {
+    content: "";
+    display: block;
+    width: 15px;
+    height: 15px;
+    margin: auto;
+    border: #1d00ff solid 3px;
+    border-top-color: #f3412b;
+    border-radius: 50%;
+    animation-name: spin;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+.github-file {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+}
+
+.github-file .media-obj {
+    border-bottom: #ffffff91 solid thin;
+    padding-bottom: 15px;
+}
+
+.github-file p {
+    font-size: .8rem;
+    line-height: 1.2rem;
+    text-align: left;
+    max-width: 100%;
+    font-weight: 300;
+}
+
+.github-file__username {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1.8rem;
 }
 
 /**/
@@ -571,6 +631,16 @@ ul {
 }
 
 /* helpers */
+
+.media-obj {
+    display: flex;
+}
+
+.media-obj .media-obj__img {
+    width: 120px;
+    height: 120px;
+    margin-right: 10px;
+}
 
 .d-none {
     display: none;
