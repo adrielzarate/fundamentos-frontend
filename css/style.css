@@ -222,9 +222,7 @@ ul {
     color: #d4d4d4;
     background-image:
         url(../img/yo-t-bn.png),
-        url(../img/yo-t-c.png),
         url(../img/yo-b.png),
-        /*linear-gradient(-45deg, #321fdb 22%, #321fdb 22%, #f3422b 63%, #f3422b 63%, #f3422b 100%),*/
         linear-gradient(-45deg,
             rgba(50, 31, 219, 1) 12%,
             rgba(50, 31, 219, .9) 22%,
@@ -236,16 +234,13 @@ ul {
         no-repeat,
         no-repeat,
         no-repeat,
-        no-repeat,
         no-repeat;
     background-size:
-        auto 85%,
         auto 85%,
         auto 85%,
         400% 400%,
         100% 100%;
     background-position:
-        85% bottom,
         85% bottom,
         80% 115%,
         0% 50%,
@@ -258,7 +253,6 @@ ul {
     0% {
         background-position:
             85% bottom,
-            85% bottom,
             80% 115%,
             0% 50%,
             0 0;
@@ -266,14 +260,12 @@ ul {
     50% {
         background-position:
             85% bottom,
-            85% bottom,
             80% 115%,
             100% 50%,
             0 0;
     }
     100% {
         background-position:
-            85% bottom,
             85% bottom,
             80% 115%,
             0% 50%,
